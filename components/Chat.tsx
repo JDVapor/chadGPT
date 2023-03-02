@@ -6,11 +6,12 @@ import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import Message from "./Message";
-import React, { useEffect, useRef } from 'react'
+import React, { useRef, useEffect } from "react";
 
 type Props = {
   chatId: string;
 };
+
 function Chat({ chatId }: Props) {
   const { data: session } = useSession();
 
@@ -28,29 +29,29 @@ function Chat({ chatId }: Props) {
         orderBy("createdAt", "asc")
       )
   );
-
-  const messagesEndRef = useRef(null)
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+  
+  const divRef = useRef<null | HTMLDivElement>(null); 
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages]);
+    divRef.current?.scrollIntoView({ behavior: "smooth" });
+  });
+
 
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden">
       {messages?.empty && (
         <>
-          <p className="mt-10 text-center text-white">Yo, I'm Chad. Enter something below to begin.</p>
+          <p className="mt-10 text-center text-white">
+            Yo, I'm Chad. Enter something below to begin.
+          </p>
           <ArrowDownCircleIcon className="h-10 w-10 mx-auto mt-5 text-white animate-bounce" />
         </>
       )}
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
       ))}
-          <div ref={messagesEndRef} />
+            <div ref={divRef} />
+
     </div>
   );
 }
