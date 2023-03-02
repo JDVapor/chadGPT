@@ -7,6 +7,7 @@ import { db } from "../firebase";
 import NewChat from "./NewChat";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 function SideBar() {
   const { data: session } = useSession();
@@ -41,6 +42,11 @@ function SideBar() {
           </div>
         </div>
       </div>
+      <div className="flex justify-between text-white">
+        <a href="https://joshdluehosh.com">Home</a>
+        <a href="https://joshdluehosh.com/postIt.html">PostIt</a>
+      </div>
+
       {session && (
         <img
           onClick={() => signOut()}
@@ -49,6 +55,9 @@ function SideBar() {
           className="h-12 w-14 rounded-full cursor-pointer mx-auto mb-2 hover:opacity-50"
         />
       )}
+      <ArrowUpCircleIcon className="h-5 w-5 mx-auto text-white justify-center" />
+
+      <div className="flex justify-center text-white">Logout</div>
     </div>
   );
 }
