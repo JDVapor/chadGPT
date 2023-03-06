@@ -29,13 +29,12 @@ function Chat({ chatId }: Props) {
         orderBy("createdAt", "asc")
       )
   );
-  
-  const divRef = useRef<null | HTMLDivElement>(null); 
+
+  const divRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     divRef.current?.scrollIntoView({ behavior: "smooth" });
   });
-
 
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden">
@@ -50,8 +49,7 @@ function Chat({ chatId }: Props) {
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
       ))}
-            <div ref={divRef} />
-
+      <div ref={divRef} />
     </div>
   );
 }

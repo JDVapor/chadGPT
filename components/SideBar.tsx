@@ -8,6 +8,7 @@ import NewChat from "./NewChat";
 import ChatRow from "./ChatRow";
 import ModelSelection from "./ModelSelection";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
+import React, { useRef, useEffect } from "react";
 
 function SideBar() {
   const { data: session } = useSession();
@@ -19,12 +20,19 @@ function SideBar() {
       )
   );
 
-  return (
-    <div className="p-2 flex flex-col h-screen">
-      <div className="flex-1">
-        <div>
-          <NewChat />
+  const divRef = useRef<null | HTMLDivElement>(null);
 
+  useEffect(() => {
+    divRef.current?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  return (
+    <div className="pt-2 pl-2 pb-2 flex flex-col h-screen">
+      <div className="pb-2 pr-2">
+        <NewChat />
+      </div>
+      <div className="flex-1 overflow-y-auto overflow-x-hidden">
+        <div className="overflow-y-auto overflow-x-hidden">
           {/*<div className="hidden sm:inline">
             <ModelSelection />
   </div>*/}
@@ -39,10 +47,11 @@ function SideBar() {
             {chats?.docs.map((chat) => (
               <ChatRow key={chat.id} id={chat.id} />
             ))}
+            <div ref={divRef} />
           </div>
         </div>
       </div>
-      <div className="flex justify-between text-white">
+      <div className="flex justify-between text-white pt-2 pr-2">
         <a href="https://joshdluehosh.com">Home</a>
         <a href="https://joshdluehosh.com/postIt.html">PostIt</a>
       </div>
