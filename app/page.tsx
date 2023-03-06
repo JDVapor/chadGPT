@@ -50,14 +50,13 @@ function HomePage() {
           </div>
           <div className="space-y-2">
             <p className="infoText">
-              You may ask follow up questions based on the response provided
+              If the reponse isn't what you were looking for, rephrase it, or add in more specific details.
             </p>
             <p className="infoText">
-              You can change or customize a response by adding more details or
-              defining a specific style
+              You can change or customize a response by defining a specific style
             </p>
             <p className="infoText">
-              chadGPT will remember and reference past inputs and its responses
+              chadGPT will provide you with what is asked, to the best of his ability, and keeping it Chad.
             </p>
             <p className="infoText">
               chadGPT will even talk to you and be your friend, if all you need is a conversation
