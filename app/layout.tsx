@@ -7,7 +7,7 @@ import Login from "../components/Login";
 import ClientProvider from "../components/ClientProvider";
 
 export const metadata = {
-  title: "chadGPT",
+  title: "ChadGPT",
   description: "For Chads",
 };
 

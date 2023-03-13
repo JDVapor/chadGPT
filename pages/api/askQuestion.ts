@@ -25,11 +25,11 @@ export default async function handler(
   const response = await query(prompt, chatId, model);
 
   const message: Message = {
-    text: response || "chadGPT doesn't have an answer for that, my guy!",
+    text: response || "ChadGPT doesn't have an answer for that, my guy!",
     createdAt: admin.firestore.Timestamp.now(),
     user: {
-      _id: "chadGPT",
-      name: "chadGPT",
+      _id: "ChadGPT",
+      name: "ChadGPT",
       avatar:
         "https://cdn.shopify.com/s/files/1/0120/0692/products/mockup-cf3fd80f_5000x.jpg?v=1601318189",
     },

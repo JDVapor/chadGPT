@@ -21,7 +21,7 @@ const query = async (prompt: string, chatId: string, model: string) => {
     .then((res) => res.data.choices[0].message?.content)
     .catch(
       (err) =>
-        `chadGPT doesn't have an answer for that, my guy! (Error: ${err.message})`
+        `ChadGPT doesn't have an answer for that, my guy! (Error: ${err.message})`
     );
   return res;
 };

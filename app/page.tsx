@@ -7,7 +7,7 @@ import {
 function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center h-screen px-2 text-white">
-      <h1 className="text-5xl font-bold mb-20">chadGPT</h1>
+      <h1 className="text-5xl font-bold mb-20">ChadGPT</h1>
       <div className="flex-shrink lg:flex space-x-2 text-center overflow-auto">
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
@@ -15,12 +15,12 @@ function HomePage() {
             <h2>Features</h2>
           </div>
           <div className="space-y-2">
-            <p className="infoText">Assistance with researching a topic</p>
-            <p className="infoText">Have me code something for you</p>
-            <p className="infoText">Ask me to explain something</p>
-            <p className="infoText">Ask me for tips or advice</p>
-            <p className="infoText">Ask me a question</p>
-            <p className="infoText">Give me a task</p>
+            <p className="infoText">Assistance with researching a topic.</p>
+            <p className="infoText">Ask me to explain something.</p>
+            <p className="infoText">Ask me for tips or advice.</p>
+            <p className="infoText">Ask me a question.</p>
+            <p className="infoText">Give me a task.</p>
+            <p className="infoText">Have me code something for you.</p>
           </div>
         </div>
         <div>
@@ -39,7 +39,7 @@ function HomePage() {
             <p className="infoText">"What makes cryptocurrencies useful?"</p>
             <p className="infoText">
               "Write me a story about a janitor named Paul who is in love with
-              the receptionist in the front office"
+              the receptionist in the front office."
             </p>
           </div>
         </div>
@@ -50,16 +50,20 @@ function HomePage() {
           </div>
           <div className="space-y-2">
             <p className="infoText">
-              If the reponse isn't what you were looking for, rephrase it, or add in more specific details.
+              If the reponse isn't what you were looking for, rephrase it, or
+              add in more specific details.
             </p>
             <p className="infoText">
-              You can change or customize a response by defining a specific style
+              Allows user to provide follow-up corrections, or change/customize
+              a response by defining a specific style.
             </p>
             <p className="infoText">
-              chadGPT will provide you with what is asked, to the best of his ability, and keeping it Chad.
+              ChadGPT will remember and be able to reference what the user said
+              earlier in the conversation, while keeping it Chad.
             </p>
             <p className="infoText">
-              chadGPT will even talk to you and be your friend, if all you need is a conversation
+              ChadGPT will even talk to you and be your friend, if all you need
+              is a conversation.
             </p>
           </div>
         </div>

@@ -12,7 +12,7 @@ function Login() {
         alt="logo"
       />
       <button onClick={() => signIn("google")} className="text-darkgray font-bold text-3xl animate-pulse ">
-        Sign in to use chadGPT
+        Sign in to use ChadGPT
       </button>
       <br/>
       <p className="text-darkgrey font bold text 1xl justify-center">Only for Chads</p>

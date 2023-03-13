@@ -1,13 +1,20 @@
 "use client";
 
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
 import { db } from "../firebase";
 import ModelSelection from "./ModelSelection";
 import useSWR from "swr";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
@@ -21,11 +28,37 @@ function ChatInput({ chatId }: Props) {
     fallbackData: "gpt-3.5-turbo-0301",
   });
 
+  const [messages] = useCollection(
+    session &&
+      query(
+        collection(
+          db,
+          "users",
+          session?.user?.email!,
+          "chats",
+          chatId,
+          "messages"
+        ),
+        orderBy("createdAt", "asc")
+      )
+  );
+
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt) return;
 
     const input = prompt.trim();
+    let priorConvo = "";
+    let inputSent = "";
+
+    if (messages && messages?.docs.length > 0) {
+      priorConvo = messages?.docs
+        .map((message) => message.data().text)
+        .join(" ");
+      inputSent = `Summarize this conversation history: ${priorConvo}. Use it for additonal context when responding to the following input: ${input}`;
+    } else {
+      inputSent = input;
+    }
 
     setPrompt("");
     const message: Message = {
@@ -52,8 +85,7 @@ function ChatInput({ chatId }: Props) {
       message
     );
 
-    const notification = toast.loading("chadGPT is thinking...");
-    const inputSent = input;
+    const notification = toast.loading("ChadGPT is thinking...");
 
     await fetch("/api/askQuestion", {
       method: "POST",
@@ -67,7 +99,7 @@ function ChatInput({ chatId }: Props) {
         session,
       }),
     }).then(() => {
-      toast.success("chadGPT has responded!", {
+      toast.success("ChadGPT has responded!", {
         id: notification,
       });
     });
