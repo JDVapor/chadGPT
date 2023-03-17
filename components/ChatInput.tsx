@@ -55,7 +55,7 @@ function ChatInput({ chatId }: Props) {
       priorConvo = messages?.docs
         .map((message) => message.data().text)
         .join(" ");
-      inputSent = `Summarize this conversation history: ${priorConvo}. Use it for additonal context, if relevant, when responding to the following input: ${input}`;
+      inputSent = `Summarize this conversation history: ${priorConvo}. If the conversation history is relevent to the next input then use it for additonal context when responding, otherwise take the input as a new conversation topic. Here is the input: ${input}`;
     } else {
       inputSent = input;
     }
