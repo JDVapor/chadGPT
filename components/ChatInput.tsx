@@ -25,7 +25,7 @@ function ChatInput({ chatId }: Props) {
   const { data: session } = useSession();
 
   const { data: model } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo-0301",
+    fallbackData: "gpt-4o-mini",
   });
 
   const [messages] = useCollection(
